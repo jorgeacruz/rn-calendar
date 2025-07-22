@@ -1,7 +1,14 @@
+import { use, useState } from 'react';
 import { StyleSheet, Text, View, StatusBar } from 'react-native';
-import { Calendar } from 'react-native-calendars';  
+import { Calendar, DateData } from 'react-native-calendars';  
 
 export default function App() {
+
+  const [day, setDay] = useState<DateData>();
+  const [month, setMonth] = useState();
+  const [year, setYear] = useState();
+  const [selected, setSelected] = useState();
+
   return (
     <View style={styles.container}>
       <StatusBar hidden={true} />
@@ -24,7 +31,16 @@ export default function App() {
           todayTextColor: '#f53100',
           selectedDayBackgroundColor: '#f53100',
           selectedDayTextColor: '#ffffff',
-        }}/>
+        }}
+        // Set the initial date
+        onDayPress={setDay}
+        // handle date selection
+        markedDates={
+          day && {
+            [day.dateString]: {selected: true, marked: true, selectedColor: '#000' }
+          }
+        }
+        />
     </View>
   );
 }
