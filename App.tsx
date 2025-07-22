@@ -30,14 +30,31 @@ export default function App() {
           textMonthFontSize: 20,
           todayTextColor: '#f53100',
           selectedDayBackgroundColor: '#f53100',
-          selectedDayTextColor: '#ffffff',
+          selectedDayTextColor: '#ff00',
+          arrowColor: '#ffffff',
+          calendarBackground:'transparent',
+
+          textDayStyle: {
+            color: '#ffffff',
+          },
+          textDisabledColor: '#999',
+
+          arrowStyle:{
+            marginHorizontal: 10,
+          }
+          
         }}
+
+        // Disable past dates
+        minDate={new Date().toISOString().split('T')[0]} 
+        hideExtraDays={true}
+
         // Set the initial date
         onDayPress={setDay}
         // handle date selection
         markedDates={
           day && {
-            [day.dateString]: {selected: true, marked: true, selectedColor: '#000' }
+            [day.dateString]: {selected: true, marked: true, selectedColor: '#fff' }
           }
         }
         />
@@ -48,7 +65,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1f023a',
+    backgroundColor: '#000',
     paddingTop:50,
     paddingHorizontal: 20,
   },
