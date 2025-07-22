@@ -1,6 +1,11 @@
 import { use, useState } from 'react';
 import { StyleSheet, Text, View, StatusBar } from 'react-native';
-import { Calendar, DateData } from 'react-native-calendars';  
+import { Calendar, DateData, LocaleConfig } from 'react-native-calendars';  
+
+// Importing the Portuguese locale configuration
+import { ptBR } from './utils/localecalendarConfig';
+LocaleConfig.locales['pt-br'] = ptBR;
+LocaleConfig.defaultLocale = 'pt-br';
 
 export default function App() {
 
@@ -13,7 +18,7 @@ export default function App() {
     <View style={styles.container}>
       <StatusBar hidden={true} />
       <Text style={styles.Title}>
-        My Personal Calendar</Text>
+        Calendário Personalizado</Text>
       <Calendar
         style={styles.calendar}
         // Customize the calendar appearance
@@ -30,7 +35,7 @@ export default function App() {
           textMonthFontSize: 20,
           todayTextColor: '#f53100',
           selectedDayBackgroundColor: '#f53100',
-          selectedDayTextColor: '#ff00',
+          selectedDayTextColor: '#ff0000',
           arrowColor: '#ffffff',
           calendarBackground:'transparent',
 
@@ -57,7 +62,15 @@ export default function App() {
             [day.dateString]: {selected: true, marked: true, selectedColor: '#fff' }
           }
         }
+
+        
         />
+        
+      <Text  style={styles.dateSelected}>
+        { // Display the selected date
+        day ? `Data Selecionada foi: ${day.dateString}` : 'Nenhuma data selecionada'
+        }
+      </Text>
     </View>
   );
 }
@@ -66,7 +79,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#000',
-    paddingTop:50,
+    paddingTop:100,
     paddingHorizontal: 20,
   },
   calendar:{  
@@ -78,6 +91,12 @@ const styles = StyleSheet.create({
     marginVertical: 20,
     textAlign: 'center',
     fontWeight: 'bold',
-  }
+  },
+  dateSelected: {
+    paddingTop: 20,
+    color: '#fff',
+    fontSize: 25,
+    textAlign: 'center',
+  },
 
 });

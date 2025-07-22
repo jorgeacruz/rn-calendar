@@ -1,4 +1,5 @@
 export const ptBR = {
+    // Define the locale configuration for the calendar
   monthNames: [
     'Janeiro',
     'Fevereiro',
