@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, StatusBar } from 'react-native';
 import { Calendar, DateData, LocaleConfig } from 'react-native-calendars';  
 
 // Importing the Portuguese locale configuration
-import { ptBR } from './utils/localecalendarConfig';
+import { ptBR} from './utils/localecalendarConfig'
 LocaleConfig.locales['pt-br'] = ptBR;
 LocaleConfig.defaultLocale = 'pt-br';
 
@@ -76,7 +76,6 @@ export default function App() {
                 : 'Nenhuma data selecionada'
             }
           </Text>
-        
         </View>
     </View>
   );
