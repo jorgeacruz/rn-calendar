@@ -65,12 +65,19 @@ export default function App() {
 
         
         />
+        <View style={{alignItems:'center'}}>
+          <Text  style={styles.dateSelected}>
+            { 
+              day 
+                ? ` ${(() => {
+                      const [year, month, date] = day.dateString.split('-');
+                      return `${date}-${month}-${year.slice(2)}`;
+                  })()}`
+                : 'Nenhuma data selecionada'
+            }
+          </Text>
         
-      <Text  style={styles.dateSelected}>
-        { // Display the selected date
-        day ? `Data Selecionada foi: ${day.dateString}` : 'Nenhuma data selecionada'
-        }
-      </Text>
+        </View>
     </View>
   );
 }
@@ -93,10 +100,14 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   dateSelected: {
-    paddingTop: 20,
-    color: '#fff',
+    marginTop: 20,
+    borderRadius: 5,
+    width:'50%',
+    paddingVertical: 20,
+    color: '#000',
     fontSize: 25,
     textAlign: 'center',
+    backgroundColor:'#fff'
   },
 
 });
